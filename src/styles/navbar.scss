@@ -3,13 +3,32 @@
     justify-content: center;
     position: relative;
     margin-top: 20px;
-    border-bottom: 1px solid gray;
-    padding-bottom: 10px;
-}
+    border-bottom: 1px solid gray;  
+    padding-bottom: 10px; 
+  }
   
-.nav-item-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  .nav-item {
+    color: gray;
+    text-decoration: none;
+    padding: 10px 20px;
     position: relative;
-}
+  }
+  
+  .nav-item:hover {
+    color: #3e7cc0;
+    cursor: pointer;
+  }
+  
+  .nav-item.active {
+    color: black;
+  }
+  
+  .underline {
+    position: absolute;
+    height: 2px;
+    background-color: black;
+    transition: width 0.3s, left 0.3s;
+    width: 0;
+    left: 0;
+    bottom: 0; 
+  }
