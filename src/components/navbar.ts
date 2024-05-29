@@ -1,19 +1,21 @@
-// import navigation.json file
-import data from "../navigation.json" assert { type: "json" };
+import "../styles/navbar.scss";
 
-export function navBar(nav: HTMLElement) {
+export function navBar(cities: { section: string, label: string }[]): HTMLElement {
+  const navbar = document.createElement('nav');
+  navbar.className = 'navbar';
 
-  let cities = data.cities;
-  let cityNames = cities.map((city) => city.label);
-
-  nav.classList.add("navbar");
-  nav.innerHTML = `
-    <div class="container">
-    <ul>
-      ${cityNames.map((cityName) => `<li>${cityName}</li>`).join("")}
-    </ul>
-    
-    </div>
+  navbar.innerHTML = `
+    ${cities.map(city => `
+      <div class="nav-item-wrapper">
+        <div class="city-time" data-section="${city.section}"></div>
+        <a href="#" class="nav-item" data-section="${city.section}">${city.label}</a>
+      </div>
+    `).join('')}
+    <div class="underline"></div>
   `;
-  
+
+  const navItems = navbar.querySelectorAll('.nav-item');
+  const underline = navbar.querySelector<HTMLElement>('.underline');
+
+  return navbar
 }

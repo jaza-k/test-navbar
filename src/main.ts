@@ -1,11 +1,8 @@
 import "./styles/main.scss";
 import { navBar } from "./components/navbar.ts";
+import data from "./navigation.json" assert { type: "json" };
 
-document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
-  <div>
-    <h1>Cities</h1>
-    <div id="navbar"></div>
-  </div>
-`;
+document.querySelector<HTMLDivElement>("#app")!.innerHTML = '';
 
-navBar(document.querySelector<HTMLElement>("#navbar")!);
+const navbar = navBar(data.cities);
+document.querySelector<HTMLDivElement>("#app")!.appendChild(navBar(data.cities));
